@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,11 @@
 		579C8D57258B8CCF008A9AD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579C8D55258B8CCF008A9AD4 /* LaunchScreen.storyboard */; };
 		579C8D62258B8CCF008A9AD4 /* CombineWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8D61258B8CCF008A9AD4 /* CombineWeatherTests.swift */; };
 		579C8D6D258B8CCF008A9AD4 /* CombineWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8D6C258B8CCF008A9AD4 /* CombineWeatherUITests.swift */; };
+		579C8D95258B933E008A9AD4 /* NetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8D94258B933E008A9AD4 /* NetworkTypes.swift */; };
+		579C8DA1258B95EF008A9AD4 /* CurrentWeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8DA0258B95EF008A9AD4 /* CurrentWeatherEndpoint.swift */; };
+		579C8DA9258B9769008A9AD4 /* CurrentWeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8DA8258B9769008A9AD4 /* CurrentWeatherFetcher.swift */; };
+		579C8DB2258B9C3F008A9AD4 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579C8DB1258B9C3F008A9AD4 /* City.swift */; };
+		579C8DBB258BA7CC008A9AD4 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 579C8DBA258BA7CC008A9AD4 /* CombineCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,10 @@
 		579C8D68258B8CCF008A9AD4 /* CombineWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		579C8D6C258B8CCF008A9AD4 /* CombineWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineWeatherUITests.swift; sourceTree = "<group>"; };
 		579C8D6E258B8CCF008A9AD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		579C8D94258B933E008A9AD4 /* NetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTypes.swift; sourceTree = "<group>"; };
+		579C8DA0258B95EF008A9AD4 /* CurrentWeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherEndpoint.swift; sourceTree = "<group>"; };
+		579C8DA8258B9769008A9AD4 /* CurrentWeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherFetcher.swift; sourceTree = "<group>"; };
+		579C8DB1258B9C3F008A9AD4 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579C8DBB258BA7CC008A9AD4 /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +109,9 @@
 		579C8D49258B8CCD008A9AD4 /* CombineWeather */ = {
 			isa = PBXGroup;
 			children = (
+				579C8DAD258B98A4008A9AD4 /* Models */,
+				579C8DA8258B9769008A9AD4 /* CurrentWeatherFetcher.swift */,
+				579C8D80258B92D9008A9AD4 /* Network */,
 				579C8D4A258B8CCD008A9AD4 /* AppDelegate.swift */,
 				579C8D4C258B8CCD008A9AD4 /* SceneDelegate.swift */,
 				579C8D4E258B8CCD008A9AD4 /* ViewController.swift */,
@@ -128,6 +141,31 @@
 			path = CombineWeatherUITests;
 			sourceTree = "<group>";
 		};
+		579C8D80258B92D9008A9AD4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				579C8D9F258B95C9008A9AD4 /* Endpoints */,
+				579C8D94258B933E008A9AD4 /* NetworkTypes.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		579C8D9F258B95C9008A9AD4 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				579C8DA0258B95EF008A9AD4 /* CurrentWeatherEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		579C8DAD258B98A4008A9AD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				579C8DB1258B9C3F008A9AD4 /* City.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +182,9 @@
 			dependencies = (
 			);
 			name = CombineWeather;
+			packageProductDependencies = (
+				579C8DBA258BA7CC008A9AD4 /* CombineCocoa */,
+			);
 			productName = CombineWeather;
 			productReference = 579C8D47258B8CCD008A9AD4 /* CombineWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +256,9 @@
 				Base,
 			);
 			mainGroup = 579C8D3E258B8CCD008A9AD4;
+			packageReferences = (
+				579C8DB9258BA7CC008A9AD4 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = 579C8D48258B8CCD008A9AD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				579C8D4F258B8CCD008A9AD4 /* ViewController.swift in Sources */,
+				579C8DA1258B95EF008A9AD4 /* CurrentWeatherEndpoint.swift in Sources */,
+				579C8DB2258B9C3F008A9AD4 /* City.swift in Sources */,
 				579C8D4B258B8CCD008A9AD4 /* AppDelegate.swift in Sources */,
+				579C8D95258B933E008A9AD4 /* NetworkTypes.swift in Sources */,
+				579C8DA9258B9769008A9AD4 /* CurrentWeatherFetcher.swift in Sources */,
 				579C8D4D258B8CCD008A9AD4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +635,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		579C8DB9258BA7CC008A9AD4 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		579C8DBA258BA7CC008A9AD4 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 579C8DB9258BA7CC008A9AD4 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 579C8D3F258B8CCD008A9AD4 /* Project object */;
 }
