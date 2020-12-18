@@ -12,4 +12,6 @@ struct City: Codable {
     let id: Int
     let cod: Int
     let name: String
+    let weather: [Weather]
+    let main: Main
 }
