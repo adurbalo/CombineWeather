@@ -22,7 +22,7 @@
 		579C8DBB258BA7CC008A9AD4 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 579C8DBA258BA7CC008A9AD4 /* CombineCocoa */; };
 		57A07BD8258CD477001BB299 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A07BD7258CD477001BB299 /* Weather.swift */; };
 		57A07BDD258CD8AB001BB299 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A07BDC258CD8AB001BB299 /* Main.swift */; };
-		57A07BE3258CDE01001BB299 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A07BE2258CDE01001BB299 /* Secrets.swift */; };
+		57A07BEB258CE59F001BB299 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A07BEA258CE59F001BB299 /* Secrets.swift */; };
 		57EA9628258CBF7100658C6C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EA9627258CBF7100658C6C /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 		579C8DB1258B9C3F008A9AD4 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		57A07BD7258CD477001BB299 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		57A07BDC258CD8AB001BB299 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		57A07BE2258CDE01001BB299 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		57A07BEA258CE59F001BB299 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		57EA9627258CBF7100658C6C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +205,7 @@
 		57A07BE1258CDDEF001BB299 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				57A07BE2258CDE01001BB299 /* Secrets.swift */,
+				57A07BEA258CE59F001BB299 /* Secrets.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 				57EA9628258CBF7100658C6C /* LocationService.swift in Sources */,
 				579C8DA9258B9769008A9AD4 /* CurrentWeatherFetcher.swift in Sources */,
 				579C8D4D258B8CCD008A9AD4 /* SceneDelegate.swift in Sources */,
-				57A07BE3258CDE01001BB299 /* Secrets.swift in Sources */,
+				57A07BEB258CE59F001BB299 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
