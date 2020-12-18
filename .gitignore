@@ -90,4 +90,4 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Ignore Secrets
-CombineWeather/Helpers/Secrets.swift
+CombineWeather/**/*/Secrets.swift
