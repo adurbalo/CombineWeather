@@ -23,7 +23,8 @@ extension CurrentWeatherEndpoint: Endpointable {
         case .name(let name):
             return [
                 "q": name,
-                "units": "metric"
+                "units": "metric",
+                "lang": "ua"
                     ]
         case .location(let lat, let lon):
             return [

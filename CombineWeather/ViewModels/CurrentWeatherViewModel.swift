@@ -54,7 +54,7 @@ class CurrentWeatherViewModel: ObservableObject {
             .sink { city in
 
                 self.cityName = city.name
-                self.cityTemperature = "\(Int(city.main.temp)) ºC"
+                self.cityTemperature = "\(Int(city.main.temp.rounded()))º"
 
                 guard let weather = city.weather.first else { return }
                 self.cityDescription = weather.description
