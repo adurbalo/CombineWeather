@@ -27,20 +27,46 @@ class ViewController: UIViewController {
 
     var cancellables = Set<AnyCancellable>()
 
+    var viewModel: CurrentWeatherViewModel = CurrentWeatherViewModel()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         //loadData()
 
-        setupBindings()
+        bind()
+
+        //setupBindings()
+    }
+
+    func bind() {
+
+        queryTextField
+            .textPublisher
+            .assign(to: \.cityName, on: viewModel)
+            .store(in: &cancellables)
+
+        viewModel
+            .$city
+            .compactMap { value in
+                return value?.name
+            }
+//            .sink(receiveValue: { (v) in
+//                self.locationNameLabel.text = v
+//            }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.text, on: self.locationNameLabel)
+            .store(in: &cancellables)
+
     }
 
     func setupBindings() {
 
         queryTextField
             .textPublisher
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .debounce(for: Constants.Combine.defaultDispatchQueueMainDebounceInterval, scheduler: DispatchQueue.main)
             .replaceNil(with: "")
             .filter { !$0.isEmpty }
             .sink {
