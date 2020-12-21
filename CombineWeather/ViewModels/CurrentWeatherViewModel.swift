@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 typealias CityPublisher = AnyPublisher<City, Error>
 
@@ -15,13 +16,19 @@ class CurrentWeatherViewModel: ObservableObject {
     // MARK: Properties
 
     //input
-    @Published var cityName: String? = nil
+    @Published var queryCityName: String? = nil
 
     //output
-    @Published var city: City? = nil
+    @Published private(set) var cityName: String?
+    @Published private(set) var cityDescription: String?
+    @Published private(set) var cityTemperature: String?
+    @Published private(set) var cityWeatherIcon: UIImage?
+
+    @Published private var city: City? = nil
 
     var cancellables = Set<AnyCancellable>()
     var apiService = APIService()
+    var imageProvider = OpenWeatherImageProvider()
 
     // MARK: Init
 
@@ -32,13 +39,32 @@ class CurrentWeatherViewModel: ObservableObject {
 
     func setupBinding() {
 
-        $cityName
+        $queryCityName
             .debounce(for: Constants.Combine.defaultDispatchQueueMainDebounceInterval,
                  scheduler: DispatchQueue.main)
             .replaceNil(with: "")
             .filter { !$0.isEmpty }
             .sink { name in
                 self.receiveWeather(for: name)
+            }.store(in: &cancellables)
+
+        $city
+            .compactMap { return $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { city in
+
+                self.cityName = city.name
+                self.cityTemperature = "\(Int(city.main.temp)) ºC"
+
+                guard let weather = city.weather.first else { return }
+                self.cityDescription = weather.description
+
+                self.imageProvider
+                    .openWeatherIcon(by: weather.icon)
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveCompletion: { _ in}, receiveValue: { self.cityWeatherIcon = $0 })
+                    .store(in: &self.cancellables)
+
             }.store(in: &cancellables)
     }
 
