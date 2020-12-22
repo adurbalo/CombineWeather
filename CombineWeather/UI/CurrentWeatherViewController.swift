@@ -44,10 +44,10 @@ class CurrentWeatherViewController: UIViewController {
             cityIndex = 0
         }
         self.viewModel.queryCityName = cities[cityIndex]
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
-            self.cityIndex += 1
-            self.updateWeather()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
+//            self.cityIndex += 1
+//            self.updateWeather()
+//        }
 
     }
 
