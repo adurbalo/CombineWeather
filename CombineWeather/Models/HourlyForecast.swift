@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct HourlyForecast {
+struct HourlyForecast: Codable {
 
     let city: City
-//    let
+    let list: [Forecast]
 }

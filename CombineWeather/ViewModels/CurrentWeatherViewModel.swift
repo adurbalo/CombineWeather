@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-typealias CityPublisher = AnyPublisher<City, Error>
+typealias CityPublisher = AnyPublisher<CityResponse, Error>
 
 class CurrentWeatherViewModel: ObservableObject {
 
@@ -24,7 +24,7 @@ class CurrentWeatherViewModel: ObservableObject {
     @Published private(set) var cityTemperature: String?
     @Published private(set) var cityWeatherIcon: UIImage?
 
-    @Published private var city: City? = nil
+    @Published private var city: CityResponse? = nil
 
     var cancellables = Set<AnyCancellable>()
     var apiService = APIService()

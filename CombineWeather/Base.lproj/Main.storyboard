@@ -92,33 +92,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTb-Q0-BqG">
+                                <rect key="frame" x="0.0" y="194" width="414" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="r33-7n-35d"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="m4s-os-zpP">
                                 <rect key="frame" x="0.0" y="44" width="414" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Qx-zz-UhW">
-                                <rect key="frame" x="0.0" y="194" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="195" width="414" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="zeb-c6-BKd"/>
+                                    <constraint firstAttribute="height" constant="100" id="zeb-c6-BKd"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="DOw-JU-YIO" kind="embed" id="Azn-Z5-nSv"/>
-                                </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgJ-NV-M7h">
+                                <rect key="frame" x="0.0" y="295" width="414" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="WpX-Uo-BJU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="69g-oJ-qC8"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
+                            <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="4Qx-zz-UhW" secondAttribute="trailing" id="DuC-sK-ma0"/>
+                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="top" secondItem="yTb-Q0-BqG" secondAttribute="bottom" id="GmS-FC-eaH"/>
                             <constraint firstItem="m4s-os-zpP" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="Jq9-Hw-793"/>
-                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="top" secondItem="m4s-os-zpP" secondAttribute="bottom" id="NEr-Oe-vK8"/>
+                            <constraint firstItem="lgJ-NV-M7h" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="LgV-k7-ehY"/>
+                            <constraint firstItem="yTb-Q0-BqG" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="NG1-FJ-4Gw"/>
                             <constraint firstItem="m4s-os-zpP" firstAttribute="top" secondItem="69g-oJ-qC8" secondAttribute="top" id="NpU-zh-uaB"/>
-                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="ROM-Nb-CRK"/>
+                            <constraint firstItem="yTb-Q0-BqG" firstAttribute="top" secondItem="m4s-os-zpP" secondAttribute="bottom" id="P8V-RT-cqt"/>
+                            <constraint firstItem="lgJ-NV-M7h" firstAttribute="top" secondItem="4Qx-zz-UhW" secondAttribute="bottom" id="UR2-Z2-eOE"/>
                             <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="m4s-os-zpP" secondAttribute="trailing" id="j1E-io-EbG"/>
-                            <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="4Qx-zz-UhW" secondAttribute="trailing" id="uqA-wg-Kuh"/>
+                            <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="lgJ-NV-M7h" secondAttribute="trailing" id="lZT-X6-NE5"/>
+                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="p1T-JS-qP9"/>
+                            <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="yTb-Q0-BqG" secondAttribute="trailing" id="u4b-uN-jKl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hww-AY-0eI"/>
                     <connections>
                         <outlet property="currentWeatherContainerView" destination="m4s-os-zpP" id="byJ-zC-oF1"/>
+                        <outlet property="hourlyWeatherContainerView" destination="4Qx-zz-UhW" id="8OL-mG-lmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6T-me-rIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -128,14 +147,14 @@
         <!--Hourly Weather View Controller-->
         <scene sceneID="aZI-GE-o7N">
             <objects>
-                <viewController id="DOw-JU-YIO" customClass="HourlyWeatherViewController" customModule="CombineWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HourlyWeatherViewController" id="DOw-JU-YIO" customClass="HourlyWeatherViewController" customModule="CombineWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o9T-9d-ikf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9PW-lh-z6U">
                                 <rect key="frame" x="0.0" y="44" width="414" height="156"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C0k-bT-d8t" customClass="HourlyCollectionViewLayout" customModule="CombineWeather" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -150,7 +169,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mt6-cd-Hry"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9PW-lh-z6U" firstAttribute="leading" secondItem="mt6-cd-Hry" secondAttribute="leading" id="KTV-Ss-NLO"/>
                             <constraint firstItem="mt6-cd-Hry" firstAttribute="bottom" secondItem="9PW-lh-z6U" secondAttribute="bottom" id="YIy-qB-Syd"/>
@@ -187,11 +206,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

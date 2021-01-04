@@ -19,8 +19,13 @@ class WeatherContainerViewController: UIViewController {
 // MARK: Properties
 
     @IBOutlet weak var currentWeatherContainerView: UIView!
+    @IBOutlet weak var hourlyWeatherContainerView: UIView!
 
     lazy var currentWeatherVC: CurrentWeatherViewController = {
+        return storyboard!.instantiateViewController()
+    }()
+
+    lazy var hourlyWeatherVC: HourlyWeatherViewController = {
         return storyboard!.instantiateViewController()
     }()
 
@@ -31,7 +36,7 @@ class WeatherContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addCurrentWeather()
+        configureChilds()
 
         let cityId = "698740" // Odessa
         setCity(id: cityId)
@@ -39,10 +44,13 @@ class WeatherContainerViewController: UIViewController {
 
     // MARK: Internal
 
-    func addCurrentWeather() {
+    func configureChilds() {
 
         append(childVC: currentWeatherVC, toView: currentWeatherContainerView)
         childs.append(currentWeatherVC)
+
+        append(childVC: hourlyWeatherVC, toView: hourlyWeatherContainerView)
+        childs.append(hourlyWeatherVC)
     }
 
     func setCity(id: String) {

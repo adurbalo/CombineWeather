@@ -29,11 +29,14 @@ class HourlyWeatherViewController: UIViewController {
 
         let cellIdentifier = String(describing: HourlyCollectionViewCell.self)
         collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+
+        setupBindings()
     }
 
     func setupBindings() {
 
         $itemsCount
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
                 self.collectionView.reloadData()
             })
@@ -58,11 +61,9 @@ extension HourlyWeatherViewController: UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: HourlyCollectionViewCell.self),
                                                       for: indexPath) as! HourlyCollectionViewCell
-
-
+        viewModel.fill(hourlyForecastView: cell, at: indexPath.row)
         return cell
     }
-
-
-
 }
+
+extension HourlyWeatherViewController: CityIdentifierReceivable {}

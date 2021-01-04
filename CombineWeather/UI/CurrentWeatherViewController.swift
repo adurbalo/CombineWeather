@@ -26,51 +26,21 @@ class CurrentWeatherViewController: UIViewController {
     var viewModel: CurrentWeatherViewModel = CurrentWeatherViewModel()
     var cancellables = Set<AnyCancellable>()
 
-    var cityIndex = 0
-
     var cityID: String = "" {
         didSet {
             self.viewModel.cityID = self.cityID
         }
     }
-    //var cities = ["Odessa", "Amsterdam", "Paris", "Berlin", "London", "Rome", "Boston", "Miami", "Tokyo", "Sydney"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindOutput()
-        bindInput()
-
-        updateWeather()
-    }
-
-    func updateWeather() {
-
-//        if cityIndex >= cities.count {
-//            cityIndex = 0
-//        }
-//        self.viewModel.queryCityName = cities[cityIndex]
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
-//            self.cityIndex += 1
-//            self.updateWeather()
-//        }
-
+        setupBindings()
     }
 
     // MARK: Binding
 
-    func bindOutput() {
-
-//        queryTextField
-//            .textPublisher
-//            .assign(to: \.queryCityName, on: viewModel)
-//            .store(in: &cancellables)
-
-
-    }
-
-    func bindInput() {
+    func setupBindings() {
 
         viewModel
             .$cityName
