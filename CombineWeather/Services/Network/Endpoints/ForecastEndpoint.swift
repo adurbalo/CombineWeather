@@ -9,9 +9,35 @@ import Foundation
 
 enum ForecastEndpoint {
 
-    case name(name: String)
+    case city(id: String)
 }
 
 extension ForecastEndpoint: Endpointable {
 
+    var path: String {
+
+        return "forecast"
+    }
+
+    var queryParameters: Parameters? {
+
+        switch self {
+        case .city(let id):
+            return [
+                "id": id,
+                "units": "metric"
+            ]
+        }
+    }
+
+    var body: Data? {
+
+        return nil
+    }
+
+    var httpMethod: HTTPMethod {
+
+        return .get
+    }
 }
+

@@ -10,6 +10,7 @@ import Foundation
 enum CurrentWeatherEndpoint {
     case name(name: String)
     case location(lat: Double, lon: Double)
+    case city(id: String)
 }
 
 extension CurrentWeatherEndpoint: Endpointable {
@@ -32,6 +33,11 @@ extension CurrentWeatherEndpoint: Endpointable {
                 "lon": String(lon),
                 "units": "metric"
                     ]
+        case .city(let id):
+            return [
+                "id": id,
+                "units": "metric"
+            ]
         }
     }
 

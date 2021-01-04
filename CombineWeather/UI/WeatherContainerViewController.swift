@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import SnapKit
 
+protocol CityIdentifierReceivable: AnyObject {
+
+    var cityID: String { get set }
+}
+
 class WeatherContainerViewController: UIViewController {
 
 // MARK: Properties
@@ -19,12 +24,17 @@ class WeatherContainerViewController: UIViewController {
         return storyboard!.instantiateViewController()
     }()
 
+    var childs: [CityIdentifierReceivable] = []
+
     // MARK: Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addCurrentWeather()
+
+        let cityId = "698740" // Odessa
+        setCity(id: cityId)
     }
 
     // MARK: Internal
@@ -32,5 +42,11 @@ class WeatherContainerViewController: UIViewController {
     func addCurrentWeather() {
 
         append(childVC: currentWeatherVC, toView: currentWeatherContainerView)
+        childs.append(currentWeatherVC)
+    }
+
+    func setCity(id: String) {
+
+        childs.forEach { $0.cityID = id }
     }
 }

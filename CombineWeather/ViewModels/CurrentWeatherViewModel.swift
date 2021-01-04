@@ -16,7 +16,7 @@ class CurrentWeatherViewModel: ObservableObject {
     // MARK: Properties
 
     //input
-    @Published var queryCityName: String? = nil
+    @Published var cityID: String? = nil
 
     //output
     @Published private(set) var cityName: String?
@@ -39,7 +39,7 @@ class CurrentWeatherViewModel: ObservableObject {
 
     func setupBinding() {
 
-        $queryCityName
+        $cityID
             .debounce(for: Constants.Combine.defaultDispatchQueueMainDebounceInterval,
                  scheduler: DispatchQueue.main)
             .replaceNil(with: "")
@@ -70,9 +70,9 @@ class CurrentWeatherViewModel: ObservableObject {
 
     // MARK: Fetch weather
 
-    func receiveWeather(for name: String) {
+    func receiveWeather(for cityID: String) {
 
-        let endpoint = CurrentWeatherEndpoint.name(name: name)
+        let endpoint = CurrentWeatherEndpoint.city(id: cityID)
         let publisher: CityPublisher = apiService.fetchModel(endpoint: endpoint)
         publisher
             .sink(receiveCompletion: { _ in }) {

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -95,12 +96,24 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Qx-zz-UhW">
+                                <rect key="frame" x="0.0" y="194" width="414" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="zeb-c6-BKd"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="DOw-JU-YIO" kind="embed" id="Azn-Z5-nSv"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="69g-oJ-qC8"/>
                         <constraints>
                             <constraint firstItem="m4s-os-zpP" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="Jq9-Hw-793"/>
+                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="top" secondItem="m4s-os-zpP" secondAttribute="bottom" id="NEr-Oe-vK8"/>
                             <constraint firstItem="m4s-os-zpP" firstAttribute="top" secondItem="69g-oJ-qC8" secondAttribute="top" id="NpU-zh-uaB"/>
+                            <constraint firstItem="4Qx-zz-UhW" firstAttribute="leading" secondItem="69g-oJ-qC8" secondAttribute="leading" id="ROM-Nb-CRK"/>
                             <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="m4s-os-zpP" secondAttribute="trailing" id="j1E-io-EbG"/>
+                            <constraint firstItem="69g-oJ-qC8" firstAttribute="trailing" secondItem="4Qx-zz-UhW" secondAttribute="trailing" id="uqA-wg-Kuh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hww-AY-0eI"/>
@@ -111,6 +124,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6T-me-rIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-173.91304347826087" y="-24.107142857142858"/>
+        </scene>
+        <!--Hourly Weather View Controller-->
+        <scene sceneID="aZI-GE-o7N">
+            <objects>
+                <viewController id="DOw-JU-YIO" customClass="HourlyWeatherViewController" customModule="CombineWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o9T-9d-ikf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9PW-lh-z6U">
+                                <rect key="frame" x="0.0" y="44" width="414" height="156"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C0k-bT-d8t" customClass="HourlyCollectionViewLayout" customModule="CombineWeather" customModuleProvider="target">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DOw-JU-YIO" id="b53-6a-Uig"/>
+                                    <outlet property="delegate" destination="DOw-JU-YIO" id="h0m-va-UDK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mt6-cd-Hry"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="9PW-lh-z6U" firstAttribute="leading" secondItem="mt6-cd-Hry" secondAttribute="leading" id="KTV-Ss-NLO"/>
+                            <constraint firstItem="mt6-cd-Hry" firstAttribute="bottom" secondItem="9PW-lh-z6U" secondAttribute="bottom" id="YIy-qB-Syd"/>
+                            <constraint firstItem="9PW-lh-z6U" firstAttribute="top" secondItem="mt6-cd-Hry" secondAttribute="top" id="f82-OA-0sd"/>
+                            <constraint firstItem="mt6-cd-Hry" firstAttribute="trailing" secondItem="9PW-lh-z6U" secondAttribute="trailing" id="m1X-ZG-DZi"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="200"/>
+                    <connections>
+                        <outlet property="collectionView" destination="9PW-lh-z6U" id="ekD-MZ-DqQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54f-xk-2YM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="-4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l9q-Q2-txC">
@@ -130,4 +186,12 @@
             <point key="canvasLocation" x="-1084.0579710144928" y="-24.107142857142858"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
