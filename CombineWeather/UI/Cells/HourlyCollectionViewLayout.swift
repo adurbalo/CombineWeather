@@ -20,7 +20,7 @@ class HourlyCollectionViewLayout: UICollectionViewLayout {
         return collectionView?.frame.size.height ?? 0
     }
 
-    var itemWidth: CGFloat = 50 {
+    var itemWidth: CGFloat = 100 {
         didSet {
             invalidateLayout()
         }

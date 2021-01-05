@@ -22,7 +22,7 @@ class HourlyWeatherViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     var apiService = APIService()
 
-    private var hourlyForecast: HourlyForecast?
+    private var hourlyForecast: [HourlyForecastViewRepresentation] = []
 
     // MARK: Init
 
@@ -61,31 +61,47 @@ class HourlyWeatherViewModel: ObservableObject {
                     print(error)
                 }
             }) {
-                self.hourlyForecast = $0
-                self.itemsCount = $0.list.count
+                self.hourlyForecast = $0.list.compactMap(HourlyForecastViewRepresentation.init)
+                self.itemsCount = self.hourlyForecast.count
             }.store(in: &cancellables)
     }
 
     func fill(hourlyForecastView: HourlyForecastView, at index: Int) {
 
-        guard let forecast = hourlyForecast else { return }
+        let viewRepresentation = hourlyForecast[index]
 
-        let hf = forecast.list[index]
-
-        hourlyForecastView.setTop(text: time(forest: forecast, index: index))
-        hourlyForecastView.setMain(text: hf.weather.first?.main)
-        hourlyForecastView.setBottom(text: "\(Int(hf.main.temp.rounded()))º")
+        hourlyForecastView.setTop(text: viewRepresentation.time)
+        hourlyForecastView.setMain(text: viewRepresentation.condition)
+        hourlyForecastView.setBottom(text: viewRepresentation.temperature)
     }
+}
 
-    func time(forest: HourlyForecast, index: Int) -> String? {
+struct HourlyForecastViewRepresentation {
+
+    let time: String?
+    let condition: String?
+    let temperature: String?
+}
+
+extension HourlyForecastViewRepresentation {
+
+    init(_ forecast: Forecast) {
+
+        let date = Date(timeIntervalSince1970: forecast.dt)
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFormatter.dateFormat = "H"
 
-        let date = Date(timeIntervalSince1970: forest.list[index].dt)
+        if Calendar.current.isDateInToday(date) {
+            dateFormatter.dateFormat = "HH:mm"
+        } else {
+            dateFormatter.dateFormat = "E, HH:mm"
+        }
 
-        return dateFormatter.string(from: date)
+        time = dateFormatter.string(from: date)
+
+        condition = forecast.weather.first?.main
+        temperature = "\(Int(forecast.main.temp.rounded()))º"
     }
 }
