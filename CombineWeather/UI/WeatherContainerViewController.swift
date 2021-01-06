@@ -29,7 +29,19 @@ class WeatherContainerViewController: UIViewController {
         return storyboard!.instantiateViewController()
     }()
 
+    private(set) var cityID: String!
+
     var childs: [CityIdentifierReceivable] = []
+
+    // MARK: Init
+
+    static func instantiate(cityID: String) -> WeatherContainerViewController {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: WeatherContainerViewController = storyboard.instantiateViewController()
+        vc.cityID = cityID
+        return vc
+    }
 
     // MARK: Override
 
@@ -38,8 +50,7 @@ class WeatherContainerViewController: UIViewController {
 
         configureChilds()
 
-        let cityId = "698740" // Odessa
-        setCity(id: cityId)
+        setCity(id: cityID)
     }
 
     // MARK: Internal
