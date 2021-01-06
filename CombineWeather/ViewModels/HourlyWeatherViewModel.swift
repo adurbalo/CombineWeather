@@ -104,6 +104,7 @@ extension HourlyForecastViewRepresentation {
             dateFormatter.dateFormat = "E, HH:mm"
         }
 
+        time = dateFormatter.string(from: date)
         condition = forecast.weather.first?.main
         temperature = "\(Int(forecast.main.temp.rounded()))º"
     }
