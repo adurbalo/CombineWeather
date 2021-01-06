@@ -60,8 +60,10 @@ class HourlyWeatherViewModel: ObservableObject {
                 case .failure(let error):
                     print(error)
                 }
-            }) {
-                self.hourlyForecast = $0.list.compactMap(HourlyForecastViewRepresentation.init)
+            }) { hf in
+                self.hourlyForecast = hf.list.compactMap {
+                    return HourlyForecastViewRepresentation(forecast: $0, city: hf.city)
+                }
                 self.itemsCount = self.hourlyForecast.count
             }.store(in: &cancellables)
     }
@@ -85,21 +87,22 @@ struct HourlyForecastViewRepresentation {
 
 extension HourlyForecastViewRepresentation {
 
-    init(_ forecast: Forecast) {
+    init(forecast: Forecast, city: City) {
 
         let date = Date(timeIntervalSince1970: forecast.dt)
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: Int(city.timezone) - TimeZone.current.secondsFromGMT() )
 
-        if Calendar.current.isDateInToday(date) {
+        var calendar = Calendar.current
+        calendar.timeZone = dateFormatter.timeZone
+
+        if calendar.isDateInToday(date) {
             dateFormatter.dateFormat = "HH:mm"
         } else {
             dateFormatter.dateFormat = "E, HH:mm"
         }
-
-        time = dateFormatter.string(from: date)
 
         condition = forecast.weather.first?.main
         temperature = "\(Int(forecast.main.temp.rounded()))º"

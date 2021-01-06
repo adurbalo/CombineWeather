@@ -15,11 +15,13 @@ protocol CitiesListViewControllerDelegate: AnyObject {
 
 class CitiesListViewController: UIViewController {
 
+
     struct City {
 
         let id: String
         let name: String
 
+        // Mock data
         static var odessa: City {
             return City(id: "698740", name: "Odessa")
         }
@@ -27,11 +29,31 @@ class CitiesListViewController: UIViewController {
         static var amsterdam: City {
             return City(id: "2759794", name: "Amsterdam")
         }
+
+        static var london: City {
+            return City(id: "2643743", name: "London")
+        }
+
+        static var paris: City {
+            return City(id: "2968815", name: "Paris")
+        }
+
+        static var berlin: City {
+            return City(id: "2950159", name: "Berlin")
+        }
+
+        static var nyc: City {
+            return City(id: "5128581", name: "New York")
+        }
+
+        static var tokyo: City {
+            return City(id: "1850147", name: "Tokyo")
+        }
     }
     
     @IBOutlet weak var tableView: UITableView!
 
-    var cities: [CitiesListViewController.City] = [.odessa, .amsterdam]
+    var cities: [CitiesListViewController.City] = [.odessa, .amsterdam, .london, .paris, .berlin, .nyc, .tokyo]
 
     weak var delegate: CitiesListViewControllerDelegate?
 
