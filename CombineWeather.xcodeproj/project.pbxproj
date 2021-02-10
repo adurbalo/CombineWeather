@@ -177,13 +177,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		57717F77258CCC3600C9EC18 /* Handlers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Handlers;
-			sourceTree = "<group>";
-		};
 		579C8D3E258B8CCD008A9AD4 = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +202,6 @@
 			children = (
 				57BE68ED25A5F9E8004583B5 /* Coordinators */,
 				5700859D2590ED1900B70431 /* Extensions */,
-				57717F77258CCC3600C9EC18 /* Handlers */,
 				57A07BE1258CDDEF001BB299 /* Helpers */,
 				579C8DAD258B98A4008A9AD4 /* Models */,
 				57717F75258CCC0100C9EC18 /* Services */,
