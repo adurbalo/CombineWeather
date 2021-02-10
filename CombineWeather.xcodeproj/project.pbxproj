@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A9F174325D42A1300E68557 /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F174125D42A1300E68557 /* Storage.xcdatamodeld */; };
+		1A9F174825D42A3100E68557 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F174725D42A3100E68557 /* StorageProvider.swift */; };
 		1AE97356258CE6E9000FD512 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE97355258CE6E9000FD512 /* Secrets.swift */; };
 		570085702590BD0300B70431 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700856F2590BD0300B70431 /* CurrentWeatherViewModel.swift */; };
 		570085782590C3C000B70431 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570085772590C3C000B70431 /* APIService.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A9F174225D42A1300E68557 /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
+		1A9F174725D42A3100E68557 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		1AE97355258CE6E9000FD512 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		5700856F2590BD0300B70431 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		570085772590C3C000B70431 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -134,6 +138,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A9F173F25D4285600E68557 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1A9F174025D4286700E68557 /* CoreData */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		1A9F174025D4286700E68557 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1A9F174125D42A1300E68557 /* Storage.xcdatamodeld */,
+				1A9F174725D42A3100E68557 /* StorageProvider.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		5700856E2590BCE900B70431 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +221,7 @@
 		579C8D49258B8CCD008A9AD4 /* CombineWeather */ = {
 			isa = PBXGroup;
 			children = (
+				1A9F173F25D4285600E68557 /* Storage */,
 				57BE68ED25A5F9E8004583B5 /* Coordinators */,
 				5700859D2590ED1900B70431 /* Extensions */,
 				57A07BE1258CDDEF001BB299 /* Helpers */,
@@ -445,6 +467,7 @@
 				57BE68F725A5FB20004583B5 /* RootViewController.swift in Sources */,
 				579C8D95258B933E008A9AD4 /* NetworkTypes.swift in Sources */,
 				57EA9628258CBF7100658C6C /* LocationService.swift in Sources */,
+				1A9F174325D42A1300E68557 /* Storage.xcdatamodeld in Sources */,
 				570085852590D47500B70431 /* OpenWeatherImageProvider.swift in Sources */,
 				570085782590C3C000B70431 /* APIService.swift in Sources */,
 				57BE68EF25A5FA2C004583B5 /* AppCoodinator.swift in Sources */,
@@ -453,6 +476,7 @@
 				5700859F2590ED3700B70431 /* UIStoryboard+Extensions.swift in Sources */,
 				570085A92590F05A00B70431 /* UIView+Extensions.swift in Sources */,
 				579C8D4D258B8CCD008A9AD4 /* SceneDelegate.swift in Sources */,
+				1A9F174825D42A3100E68557 /* StorageProvider.swift in Sources */,
 				570085802590C74F00B70431 /* Constants.swift in Sources */,
 				57CE18D025A346D6008FCE09 /* Forecast.swift in Sources */,
 				1AE97356258CE6E9000FD512 /* Secrets.swift in Sources */,
@@ -821,6 +845,19 @@
 			productName = CombineCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1A9F174125D42A1300E68557 /* Storage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A9F174225D42A1300E68557 /* Storage.xcdatamodel */,
+			);
+			currentVersion = 1A9F174225D42A1300E68557 /* Storage.xcdatamodel */;
+			path = Storage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 579C8D3F258B8CCD008A9AD4 /* Project object */;
 }
