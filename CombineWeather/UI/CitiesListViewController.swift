@@ -56,12 +56,19 @@ class CitiesListViewController: UIViewController {
     var cities: [CitiesListViewController.City] = [.odessa, .amsterdam, .london, .paris, .berlin, .nyc, .tokyo]
 
     weak var delegate: CitiesListViewControllerDelegate?
+    
+    let storageProvider = StorageProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         tableView.reloadData()
+    }
+    
+    func coreData(city: CitiesListViewController.City) {
+        
+        storageProvider.save(city: city)
     }
 }
 
@@ -86,6 +93,8 @@ extension CitiesListViewController: UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
 
-        delegate?.didSelect(city: cities[indexPath.row])
+//        delegate?.didSelect(city: cities[indexPath.row])
+        
+        coreData(city: cities[indexPath.row])
     }
 }
