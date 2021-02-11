@@ -58,12 +58,15 @@ class CitiesListViewController: UIViewController {
     weak var delegate: CitiesListViewControllerDelegate?
     
     let storageProvider = StorageProvider()
+    var dataProvider: CityDataProvider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         tableView.reloadData()
+        
+        dataProvider = CityDataProvider(storage: storageProvider)
     }
     
     func coreData(city: CitiesListViewController.City) {
