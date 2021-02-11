@@ -50,4 +50,16 @@ extension StorageProvider {
         }
         
     }
+    
+    func getAllCities() -> [MOCity] {
+        
+        let fetchRequest: NSFetchRequest<MOCity> = MOCity.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Failed to fetch movies: \(error)")
+            return []
+        }
+    }
 }

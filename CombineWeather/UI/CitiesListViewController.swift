@@ -95,6 +95,6 @@ extension CitiesListViewController: UITableViewDelegate {
 
 //        delegate?.didSelect(city: cities[indexPath.row])
         
-        coreData(city: cities[indexPath.row])
+        //coreData(city: cities[indexPath.row])
     }
 }

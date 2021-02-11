@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A03BCFB25D59F66002C7665 /* CityDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03BCFA25D59F66002C7665 /* CityDataProvider.swift */; };
 		1A9F174325D42A1300E68557 /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F174125D42A1300E68557 /* Storage.xcdatamodeld */; };
 		1A9F174825D42A3100E68557 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F174725D42A3100E68557 /* StorageProvider.swift */; };
 		1AE97356258CE6E9000FD512 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE97355258CE6E9000FD512 /* Secrets.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A03BCFA25D59F66002C7665 /* CityDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataProvider.swift; sourceTree = "<group>"; };
 		1A9F174225D42A1300E68557 /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
 		1A9F174725D42A3100E68557 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		1AE97355258CE6E9000FD512 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				570085772590C3C000B70431 /* APIService.swift */,
 				57EA9627258CBF7100658C6C /* LocationService.swift */,
 				570085842590D47500B70431 /* OpenWeatherImageProvider.swift */,
+				1A03BCFA25D59F66002C7665 /* CityDataProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				57EA9628258CBF7100658C6C /* LocationService.swift in Sources */,
 				1A9F174325D42A1300E68557 /* Storage.xcdatamodeld in Sources */,
 				570085852590D47500B70431 /* OpenWeatherImageProvider.swift in Sources */,
+				1A03BCFB25D59F66002C7665 /* CityDataProvider.swift in Sources */,
 				570085782590C3C000B70431 /* APIService.swift in Sources */,
 				57BE68EF25A5FA2C004583B5 /* AppCoodinator.swift in Sources */,
 				57CE18B125A32BE8008FCE09 /* HourlyCollectionViewCell.swift in Sources */,
