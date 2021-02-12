@@ -8,11 +8,14 @@
 import Foundation
 import CoreData
 import Combine
+import UIKit
 
 class CityDataProvider: NSObject {
     
     let storage: StorageProvider
-    let fetchedController: NSFetchedResultsController<MOCity>
+    @Published var snapshot: NSDiffableDataSourceSnapshot<Int, MOCity>?
+    
+    private let fetchedController: NSFetchedResultsController<MOCity>
     
     init(storage: StorageProvider) {
         self.storage = storage
@@ -33,25 +36,13 @@ class CityDataProvider: NSObject {
         } catch {
             print("Unable fetch: \(error)")
         }
-        
-        guard let objects = fetchedController.fetchedObjects else { return }
-        
-        objects.forEach { (res) in
-            
-            print(res.name)
-        }
     }
 }
 
 extension CityDataProvider: NSFetchedResultsControllerDelegate {
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        guard let objects = controller.fetchedObjects else { return }
-        
-        objects.forEach { (res) in
-            
-            print(res)
-        }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+  
+        self.snapshot = snapshot as NSDiffableDataSourceSnapshot<Int, MOCity>
     }
 }

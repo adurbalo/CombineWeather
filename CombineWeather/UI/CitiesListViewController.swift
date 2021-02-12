@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 protocol CitiesListViewControllerDelegate: AnyObject {
 
@@ -60,6 +61,8 @@ class CitiesListViewController: UIViewController {
     let storageProvider = StorageProvider()
     var dataProvider: CityDataProvider!
     
+    var cancellables: Set<AnyCancellable> = []
+    
     private lazy var dataSource =  {
         return UITableViewDiffableDataSource<Int, MOCity>(tableView: tableView) { tableView, indexPath, city in
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
@@ -75,25 +78,12 @@ class CitiesListViewController: UIViewController {
         tableView.dataSource = dataSource
         
         dataProvider = CityDataProvider(storage: storageProvider)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateTable()
-    }
-    
-    func updateTable() {
-        
-        let section = 0
-        
-        var snapshot = NSDiffableDataSourceSnapshot<Int, MOCity>()
-        snapshot.appendSections([section])
-        
-        let items = dataProvider.fetchedController.fetchedObjects ?? []
-        snapshot.appendItems(items, toSection: section)
-        
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataProvider.$snapshot
+            .sink { [weak self] snap in
+                if let snap = snap {
+                    self?.dataSource.apply(snap)
+                }
+            }.store(in: &cancellables)
     }
     
     func buildDataSource() -> UITableViewDiffableDataSource<Int, MOCity> {
