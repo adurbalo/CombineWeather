@@ -12,7 +12,7 @@ import Combine
 class CityDataProvider: NSObject {
     
     let storage: StorageProvider
-    private let fetchedController: NSFetchedResultsController<MOCity>
+    let fetchedController: NSFetchedResultsController<MOCity>
     
     init(storage: StorageProvider) {
         self.storage = storage

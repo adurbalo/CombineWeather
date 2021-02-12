@@ -59,34 +59,50 @@ class CitiesListViewController: UIViewController {
     
     let storageProvider = StorageProvider()
     var dataProvider: CityDataProvider!
+    
+    private lazy var dataSource =  {
+        return UITableViewDiffableDataSource<Int, MOCity>(tableView: tableView) { tableView, indexPath, city in
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+            cell.textLabel?.text = city.name
+            return cell
+        }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
-        tableView.reloadData()
+        tableView.dataSource = dataSource
         
         dataProvider = CityDataProvider(storage: storageProvider)
     }
     
-    func coreData(city: CitiesListViewController.City) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        storageProvider.save(city: city)
+        updateTable()
     }
-}
-
-extension CitiesListViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return cities.count
+    
+    func updateTable() {
+        
+        let section = 0
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, MOCity>()
+        snapshot.appendSections([section])
+        
+        let items = dataProvider.fetchedController.fetchedObjects ?? []
+        snapshot.appendItems(items, toSection: section)
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-        cell.textLabel?.text = cities[indexPath.row].name
-        return cell
+    
+    func buildDataSource() -> UITableViewDiffableDataSource<Int, MOCity> {
+        
+        return UITableViewDiffableDataSource<Int, MOCity>(tableView: tableView) { tableView, indexPath, city in
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+            cell.textLabel?.text = city.name
+            return cell
+        }
     }
 }
 
@@ -101,3 +117,4 @@ extension CitiesListViewController: UITableViewDelegate {
         //coreData(city: cities[indexPath.row])
     }
 }
+
