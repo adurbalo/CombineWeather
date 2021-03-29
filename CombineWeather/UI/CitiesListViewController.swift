@@ -81,7 +81,8 @@ class CitiesListViewController: UIViewController {
         dataProvider.$snapshot
             .sink { [weak self] snap in
                 if let snap = snap {
-                    self?.dataSource.apply(snap)
+                    #warning("Crash here")
+                    //self?.dataSource.apply(snap)
                 }
             }.store(in: &cancellables)
     }
